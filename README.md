@@ -1,7 +1,8 @@
-# Sieve of Atkins ported to JavaScript
+# Sieve of Atkins & Sieve of Eratosthenes ported to JavaScript
 ## How to use
-    var sieve = require("./AtkinsSieve.js");
+    var sieve = require("./Sieve.js");
 	console.log(sieve.atkinsSieve(100));
+	console.log(sieve.eratosthenesSieve(100));
 	
 # About me
 
