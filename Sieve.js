@@ -41,11 +41,47 @@ exports.atkinsSieve = function(limit){
 		}
 	}
 	
+	// If the number is prime, push to the results array
 	for(i = 7; i< limit; i++){
 		if(sieve[i] ===1){
 			results.push(i);
 		}
 	}
 	
+	return results;
+}
+
+exports.eratosthenesSieve = function(limit){
+	var sieve = new Array(limit);
+	var results = [];
+	// Initialize 1 to 0
+	sieve[0] = 0;
+	
+	// Initialize 2 to 1
+	sieve[1] = 1;
+	
+	// Initialize the starting array, ignoring multiples of 2
+	for(var i = 2; i < limit; i++){
+		((i+1) % 2) === 0 ? sieve[i] = 0: sieve[i] = 1;
+	}
+	
+	// Iterate through numbers, skipping evens
+	for(var j = 2; j <= limit; j += 2){
+		
+		// If the index is true
+		if(sieve[j]){
+			// Go to each multiple of this current number, they are not prime
+			for(var k = 2*(j+1); k <= limit; k +=(j+1)){
+				sieve[k-1] = 0;
+			}
+		}
+	}
+	
+	// Gather the prime numbers
+	for(var l = 1; l <= limit; l++){
+		if(sieve[l] === 1){
+			results.push(l+1);
+		}
+	}
 	return results;
 }
